@@ -15,7 +15,8 @@ import {
     Menu,
     MenuItem,
     OutlinedInput,
-    Select
+    Select,
+    ThemeProvider
 } from "@mui/material";
 import {SelectChangeEvent} from "@mui/material/Select";
 import {createTheme} from "@mui/material/styles";
