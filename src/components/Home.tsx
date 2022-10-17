@@ -4,7 +4,6 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
@@ -16,10 +15,7 @@ import {
     Menu,
     MenuItem,
     OutlinedInput,
-    Select,
-    ThemeOptions,
-    ThemeProvider,
-    useTheme
+    Select
 } from "@mui/material";
 import {SelectChangeEvent} from "@mui/material/Select";
 import {createTheme} from "@mui/material/styles";
@@ -90,40 +86,32 @@ function Home() {
         <ThemeProvider theme={theme}>
             <CssBaseline/>
             <Container maxWidth="lg">
-                <Box minWidth="100%"
-                     display="flex"
-                     justifyContent="center"
-                     alignItems="center">
-                    <Grid
-                        alignItems="center"
-                        justifyContent="center"
-                        container spacing={2}>
-
-                        <Grid item xs={4}>
-                            <CHOPLogo/>
-                        </Grid>
-                        <Grid item xs={8}>
-                            <Typography variant="h4" gutterBottom>
-                                Expertise Knowledge Platform
-                            </Typography>
-                        </Grid>
-
-                    </Grid>
+                <Box sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: 'center',
+                    p: 1,
+                    m: 1
+                }}>
+                    <CHOPLogo/>
+                    <Typography variant="h4" gutterBottom>
+                        Expertise Knowledge Platform
+                    </Typography>
                 </Box>
-                <FormControl>
-                    <RadioGroup
-                        row
-                        aria-labelledby="demo-row-radio-buttons-group-label"
-                        name="row-radio-buttons-group"
-                    >
-                        <FormControlLabel value="expert" control={<Radio/>} label="Find Expert by Keywords"
-                                          checked={status === 1}
-                                          onChange={() => radioHandler(1)}/>
-                        <FormControlLabel value="works" control={<Radio/>} label="Find works of specific Experts"
-                                          checked={status === 2}
-                                          onChange={() => radioHandler(2)}/>
-                    </RadioGroup>
-                </FormControl>
+                <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    p: 1,
+                    m: 1,
+                    borderRadius: 1,
+                }}>
+                    <FormControlLabel value="expert" control={<Radio/>} label="Find Expert by Keywords"
+                                      checked={status === 1}
+                                      onChange={() => radioHandler(1)}/>
+                    <FormControlLabel value="works" control={<Radio/>} label="Find works of specific Experts"
+                                      checked={status === 2}
+                                      onChange={() => radioHandler(2)}/>
+                </Box>
                 {status === 1 && <div>
                     <Container maxWidth="md">
                         <Grid
@@ -272,7 +260,8 @@ function Home() {
                 </div>}
             </Container>
         </ThemeProvider>
-    );
+    )
+        ;
 }
 
 export default Home;

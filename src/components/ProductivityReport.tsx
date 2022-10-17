@@ -10,20 +10,32 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
-import {styled, tableCellClasses, TablePagination} from "@mui/material";
+import {Button, CssBaseline, styled, tableCellClasses, TablePagination, ThemeProvider} from "@mui/material";
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import {createTheme} from "@mui/material/styles";
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#1976d2',
+        },
+        secondary: {
+            main: 'rgba(0,0,0,0)',
+        }
+    },
+});
+
+const StyledTableCell = styled(TableCell)(({theme}) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: "#1976D2",
         color: theme.palette.common.white
     }
 }));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
+const StyledTableRow = styled(TableRow)(({theme}) => ({
     "&:nth-of-type(odd)": {
         backgroundColor: theme.palette.action.hover
     },
@@ -129,7 +141,7 @@ const nihrRows = [
 // descriptive table creation
 
 function createDescriptiveQueryRows(query: string, year: number) {
-    return { query, year };
+    return {query, year};
 }
 
 const descriptiveQueryRows = [
@@ -137,7 +149,7 @@ const descriptiveQueryRows = [
 ];
 
 function createDescriptiveSourceRows(source: string, date: string) {
-    return { source, date };
+    return {source, date};
 }
 
 const descriptiveSourceRows = [
@@ -164,11 +176,12 @@ function summativeTable() {
     return (
         <Box>
             <Grid container spacing={2}>
-                <Grid item alignItems="stretch">
+                <Grid item
+                      sx={{display: 'flex', alignItems: 'end'}}>
                     <Typography>Search table</Typography>
                 </Grid>
 
-                <Grid item alignItems="stretch">
+                <Grid item>
                     <TextField
                         id="filled-search"
                         label="Search terms"
@@ -176,6 +189,7 @@ function summativeTable() {
                     />
                 </Grid>
             </Grid>
+            <p></p>
             <TableContainer component={Paper}>
                 <Table sx={{minWidth: 1150}} aria-label="simple table">
                     <TableHead>
@@ -230,6 +244,18 @@ function summativeTable() {
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    p: 1,
+                    m: 1,
+                    bgcolor: 'background.paper',
+                    borderRadius: 1,
+                }}
+            >
+                <Button variant="contained">Download CSV</Button>
+            </Box>
         </Box>
     );
 }
@@ -250,11 +276,12 @@ function pubTable() {
     return (
         <Box>
             <Grid container spacing={2}>
-                <Grid item alignItems="stretch">
+                <Grid item
+                      sx={{display: 'flex', alignItems: 'end'}}>
                     <Typography>Search table</Typography>
                 </Grid>
 
-                <Grid item alignItems="stretch">
+                <Grid item>
                     <TextField
                         id="filled-search"
                         label="Search terms"
@@ -262,6 +289,7 @@ function pubTable() {
                     />
                 </Grid>
             </Grid>
+            <p></p>
             <TableContainer component={Paper}>
                 <Table sx={{minWidth: 1150}} aria-label="simple table">
                     <TableHead>
@@ -304,6 +332,18 @@ function pubTable() {
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    p: 1,
+                    m: 1,
+                    bgcolor: 'background.paper',
+                    borderRadius: 1,
+                }}
+            >
+                <Button variant="contained">Download CSV</Button>
+            </Box>
         </Box>
     );
 }
@@ -324,11 +364,12 @@ function nihrTable() {
     return (
         <Box>
             <Grid container spacing={2}>
-                <Grid item alignItems="stretch">
+                <Grid item
+                      sx={{display: 'flex', alignItems: 'end'}}>
                     <Typography>Search table</Typography>
                 </Grid>
 
-                <Grid item alignItems="stretch">
+                <Grid item>
                     <TextField
                         id="filled-search"
                         label="Search terms"
@@ -336,6 +377,7 @@ function nihrTable() {
                     />
                 </Grid>
             </Grid>
+            <p></p>
             <TableContainer component={Paper}>
                 <Table sx={{minWidth: 1150}} aria-label="simple table">
                     <TableHead>
@@ -380,6 +422,18 @@ function nihrTable() {
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    p: 1,
+                    m: 1,
+                    bgcolor: 'background.paper',
+                    borderRadius: 1,
+                }}
+            >
+                <Button variant="contained">Download CSV</Button>
+            </Box>
         </Box>
     );
 }
@@ -400,11 +454,12 @@ function descriptiveTable() {
     return (
         <Box>
             <Grid container spacing={2}>
-                <Grid item alignItems="stretch">
+                <Grid item
+                      sx={{display: 'flex', alignItems: 'end'}}>
                     <Typography>Search table</Typography>
                 </Grid>
 
-                <Grid item alignItems="stretch">
+                <Grid item>
                     <TextField
                         id="filled-search"
                         label="Search terms"
@@ -465,6 +520,18 @@ function descriptiveTable() {
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    p: 1,
+                    m: 1,
+                    bgcolor: 'background.paper',
+                    borderRadius: 1,
+                }}
+            >
+                <Button variant="contained">Download CSV</Button>
+            </Box>
         </Box>
     );
 }
@@ -477,28 +544,31 @@ function ProductivityReport() {
     };
 
     return (
-        <TabContext value={value}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <TabList onChange={handleChange} aria-label="lab API tabs example">
-                    <Tab label="Summative" value="1" />
-                    <Tab label="PubMed Ref" value="2" />
-                    <Tab label="NIHR Ref" value="3" />
-                    <Tab label="Descriptive" value="4" />
-                </TabList>
-            </Box>
-            <TabPanel value="1">
-                {summativeTable()}
-            </TabPanel>
-            <TabPanel value="2">
-                {pubTable()}
-            </TabPanel>
-            <TabPanel value="3">
-                {nihrTable()}
-            </TabPanel>
-            <TabPanel value="4">
-                {descriptiveTable()}
-            </TabPanel>
-        </TabContext>
+        <ThemeProvider theme={theme}>
+            <CssBaseline/>
+            <TabContext value={value}>
+                <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
+                    <TabList onChange={handleChange} aria-label="lab API tabs example">
+                        <Tab label="Summative" value="1"/>
+                        <Tab label="PubMed Ref" value="2"/>
+                        <Tab label="NIHR Ref" value="3"/>
+                        <Tab label="Descriptive" value="4"/>
+                    </TabList>
+                </Box>
+                <TabPanel value="1">
+                    {summativeTable()}
+                </TabPanel>
+                <TabPanel value="2">
+                    {pubTable()}
+                </TabPanel>
+                <TabPanel value="3">
+                    {nihrTable()}
+                </TabPanel>
+                <TabPanel value="4">
+                    {descriptiveTable()}
+                </TabPanel>
+            </TabContext>
+        </ThemeProvider>
     );
 }
 
