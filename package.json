@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
+    "@mui/lab": "^5.0.0-alpha.103",
     "@mui/material": "latest",
     "@mui/x-date-pickers": "^5.0.4",
     "@types/react": "latest",
