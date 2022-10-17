@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {TablePagination} from "@mui/material";
+import {styled, tableCellClasses, TablePagination} from "@mui/material";
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
@@ -15,6 +15,23 @@ import TabPanel from '@mui/lab/TabPanel';
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: "#1976D2",
+        color: theme.palette.common.white
+    }
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    "&:nth-of-type(odd)": {
+        backgroundColor: theme.palette.action.hover
+    },
+    // hide last border
+    "&:last-child td, &:last-child th": {
+        border: 0
+    }
+}));
 
 // summative table creation
 
@@ -131,44 +148,44 @@ function summativeTable() {
             <TableContainer component={Paper}>
                 <Table sx={{minWidth: 1150}} aria-label="simple table">
                     <TableHead>
-                        <TableRow>
-                            <TableCell>Name</TableCell>
-                            <TableCell align="right">Email</TableCell>
-                            <TableCell align="right">ORCID</TableCell>
-                            <TableCell align="right">Dept ESPA</TableCell>
-                            <TableCell align="right">Dept OFD</TableCell>
-                            <TableCell align="right">Rank OFD</TableCell>
-                            <TableCell align="right">Track OFD</TableCell>
-                            <TableCell align="right"># related pubs</TableCell>
-                            <TableCell align="right"># pubs total</TableCell>
-                            <TableCell align="right">% pubs related</TableCell>
-                            <TableCell align="right">Median IF related pubs</TableCell>
-                            <TableCell align="right">Max IF related pubs</TableCell>
-                            <TableCell align="right"># first author related pubs</TableCell>
-                            <TableCell align="right"># last author related pubs</TableCell>
-                        </TableRow>
+                        <StyledTableRow>
+                            <StyledTableCell>Name</StyledTableCell>
+                            <StyledTableCell align="right">Email</StyledTableCell>
+                            <StyledTableCell align="right">ORCID</StyledTableCell>
+                            <StyledTableCell align="right">Dept ESPA</StyledTableCell>
+                            <StyledTableCell align="right">Dept OFD</StyledTableCell>
+                            <StyledTableCell align="right">Rank OFD</StyledTableCell>
+                            <StyledTableCell align="right">Track OFD</StyledTableCell>
+                            <StyledTableCell align="right"># related pubs</StyledTableCell>
+                            <StyledTableCell align="right"># pubs total</StyledTableCell>
+                            <StyledTableCell align="right">% pubs related</StyledTableCell>
+                            <StyledTableCell align="right">Median IF related pubs</StyledTableCell>
+                            <StyledTableCell align="right">Max IF related pubs</StyledTableCell>
+                            <StyledTableCell align="right"># first author related pubs</StyledTableCell>
+                            <StyledTableCell align="right"># last author related pubs</StyledTableCell>
+                        </StyledTableRow>
                     </TableHead>
                     <TableBody>
                         {summativeRows.map((row) => (
-                            <TableRow
+                            <StyledTableRow
                                 key={row.name}
                                 sx={{'&:last-child td, &:last-child th': {border: 0}}}
                             >
-                                <TableCell>{row.name}</TableCell>
-                                <TableCell>{row.email}</TableCell>
-                                <TableCell>{row.orcId}</TableCell>
-                                <TableCell>{row.deptEspa}</TableCell>
-                                <TableCell>{row.deptOfd}</TableCell>
-                                <TableCell>{row.rankOfd}</TableCell>
-                                <TableCell>{row.trackOfd}</TableCell>
-                                <TableCell>{row.relatedPubs}</TableCell>
-                                <TableCell>{row.pubsTotal}</TableCell>
-                                <TableCell>{row.pubsRelated}</TableCell>
-                                <TableCell>{row.medianIfRelated}</TableCell>
-                                <TableCell>{row.maxIfRelated}</TableCell>
-                                <TableCell>{row.firstAuthor}</TableCell>
-                                <TableCell>{row.lastAuthor}</TableCell>
-                            </TableRow>
+                                <StyledTableCell>{row.name}</StyledTableCell>
+                                <StyledTableCell>{row.email}</StyledTableCell>
+                                <StyledTableCell>{row.orcId}</StyledTableCell>
+                                <StyledTableCell>{row.deptEspa}</StyledTableCell>
+                                <StyledTableCell>{row.deptOfd}</StyledTableCell>
+                                <StyledTableCell>{row.rankOfd}</StyledTableCell>
+                                <StyledTableCell>{row.trackOfd}</StyledTableCell>
+                                <StyledTableCell>{row.relatedPubs}</StyledTableCell>
+                                <StyledTableCell>{row.pubsTotal}</StyledTableCell>
+                                <StyledTableCell>{row.pubsRelated}</StyledTableCell>
+                                <StyledTableCell>{row.medianIfRelated}</StyledTableCell>
+                                <StyledTableCell>{row.maxIfRelated}</StyledTableCell>
+                                <StyledTableCell>{row.firstAuthor}</StyledTableCell>
+                                <StyledTableCell>{row.lastAuthor}</StyledTableCell>
+                            </StyledTableRow>
                         ))}
                     </TableBody>
                 </Table>
@@ -217,34 +234,34 @@ function referenceTable() {
             <TableContainer component={Paper}>
                 <Table sx={{minWidth: 1150}} aria-label="simple table">
                     <TableHead>
-                        <TableRow>
-                            <TableCell>Author Name</TableCell>
-                            <TableCell align="right">Active Dir Name</TableCell>
-                            <TableCell align="right">Author Email</TableCell>
-                            <TableCell align="right">Title</TableCell>
-                            <TableCell align="right">Abstract</TableCell>
-                            <TableCell align="right">Active</TableCell>
-                            <TableCell align="right">PMID</TableCell>
-                            <TableCell align="right">Link</TableCell>
-                            <TableCell align="right">Journal Name</TableCell>
-                        </TableRow>
+                        <StyledTableRow>
+                            <StyledTableCell>Author Name</StyledTableCell>
+                            <StyledTableCell align="right">Active Dir Name</StyledTableCell>
+                            <StyledTableCell align="right">Author Email</StyledTableCell>
+                            <StyledTableCell align="right">Title</StyledTableCell>
+                            <StyledTableCell align="right">Abstract</StyledTableCell>
+                            <StyledTableCell align="right">Active</StyledTableCell>
+                            <StyledTableCell align="right">PMID</StyledTableCell>
+                            <StyledTableCell align="right">Link</StyledTableCell>
+                            <StyledTableCell align="right">Journal Name</StyledTableCell>
+                        </StyledTableRow>
                     </TableHead>
                     <TableBody>
                         {referenceRows.map((row) => (
-                            <TableRow
+                            <StyledTableRow
                                 key={row.authorName}
                                 sx={{'&:last-child td, &:last-child th': {border: 0}}}
                             >
-                                <TableCell>{row.authorName}</TableCell>
-                                <TableCell>{row.activeDir}</TableCell>
-                                <TableCell>{row.authorEmail}</TableCell>
-                                <TableCell>{row.title}</TableCell>
-                                <TableCell>{row.abstract}</TableCell>
-                                <TableCell>{row.active}</TableCell>
-                                <TableCell>{row.pmId}</TableCell>
-                                <TableCell>{row.link}</TableCell>
-                                <TableCell>{row.journalName}</TableCell>
-                            </TableRow>
+                                <StyledTableCell>{row.authorName}</StyledTableCell>
+                                <StyledTableCell>{row.activeDir}</StyledTableCell>
+                                <StyledTableCell>{row.authorEmail}</StyledTableCell>
+                                <StyledTableCell>{row.title}</StyledTableCell>
+                                <StyledTableCell>{row.abstract}</StyledTableCell>
+                                <StyledTableCell>{row.active}</StyledTableCell>
+                                <StyledTableCell>{row.pmId}</StyledTableCell>
+                                <StyledTableCell>{row.link}</StyledTableCell>
+                                <StyledTableCell>{row.journalName}</StyledTableCell>
+                            </StyledTableRow>
                         ))}
                     </TableBody>
                 </Table>
@@ -293,20 +310,20 @@ function descriptiveTable() {
             <TableContainer component={Paper}>
                 <Table sx={{minWidth: 1150}} aria-label="simple table">
                     <TableHead>
-                        <TableRow>
-                            <TableCell>Query</TableCell>
-                            <TableCell>Year</TableCell>
-                        </TableRow>
+                        <StyledTableRow>
+                            <StyledTableCell>Query</StyledTableCell>
+                            <StyledTableCell>Year</StyledTableCell>
+                        </StyledTableRow>
                     </TableHead>
                     <TableBody>
                         {descriptiveQueryRows.map((row) => (
-                            <TableRow
+                            <StyledTableRow
                                 key={row.query}
                                 sx={{'&:last-child td, &:last-child th': {border: 0}}}
                             >
-                                <TableCell>{row.query}</TableCell>
-                                <TableCell>{row.year}</TableCell>
-                            </TableRow>
+                                <StyledTableCell>{row.query}</StyledTableCell>
+                                <StyledTableCell>{row.year}</StyledTableCell>
+                            </StyledTableRow>
                         ))}
                     </TableBody>
                 </Table>
@@ -315,20 +332,20 @@ function descriptiveTable() {
             <TableContainer component={Paper}>
                 <Table sx={{minWidth: 1150}} aria-label="simple table">
                     <TableHead>
-                        <TableRow>
-                            <TableCell>Data Sources Used in Query</TableCell>
-                            <TableCell>Date Last Updated</TableCell>
-                        </TableRow>
+                        <StyledTableRow>
+                            <StyledTableCell>Data Sources Used in Query</StyledTableCell>
+                            <StyledTableCell>Date Last Updated</StyledTableCell>
+                        </StyledTableRow>
                     </TableHead>
                     <TableBody>
                         {descriptiveSourceRows.map((row) => (
-                            <TableRow
+                            <StyledTableRow
                                 key={row.source}
                                 sx={{'&:last-child td, &:last-child th': {border: 0}}}
                             >
-                                <TableCell>{row.source}</TableCell>
-                                <TableCell>{row.date}</TableCell>
-                            </TableRow>
+                                <StyledTableCell>{row.source}</StyledTableCell>
+                                <StyledTableCell>{row.date}</StyledTableCell>
+                            </StyledTableRow>
                         ))}
                     </TableBody>
                 </Table>
